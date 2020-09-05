@@ -15,9 +15,9 @@ import java.util.logging.Logger;
  *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
  */
 public class Main {
-    private static final Logger logger = Logger.getLogger("Server started") ;
+    private static final Logger logger = Logger.getLogger(AllRequestsServlet.class.getName().toString()) ;
     public static void main(String[] args) throws Exception {
-
+        logger.fine("Server started");
         AllRequestsServlet allRequestsServlet = new AllRequestsServlet();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
