@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class Main {
     private static final Logger logger = Logger.getLogger(AllRequestsServlet.class.getName().toString()) ;
     public static void main(String[] args) throws Exception {
-        logger.fine("Server started");
+        logger.info("Server started");
         AllRequestsServlet allRequestsServlet = new AllRequestsServlet();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
