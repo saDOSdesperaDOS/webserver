@@ -3,7 +3,6 @@ package servlets;
 import accounts.AccountService;
 import accounts.UserProfile;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,11 +18,18 @@ public class SignInServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String sessionIdProfile = req.getSession().getId();
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        resp.setContentType("text/html");
-        PrintWriter out = resp.getWriter();
-        out.println(accountService.getUserBySessionId(sessionIdProfile));
+        if (re) {
+            resp.setContentType("text/html");
+            resp.setStatus(200);
+            PrintWriter out = resp.getWriter();
+            out.println("Authorized: login");
+        } else {
+            resp.setContentType("text/html");
+            resp.setStatus(401);
+            PrintWriter out = resp.getWriter();
+            out.println("Unauthorized");
+        }
     }
 }

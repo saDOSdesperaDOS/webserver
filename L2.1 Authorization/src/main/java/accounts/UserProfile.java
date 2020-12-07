@@ -1,7 +1,6 @@
 package accounts;
 
 /**
- * @author v.chibrikov
  *         <p>
  *         Пример кода для курса на https://stepic.org/
  *         <p>

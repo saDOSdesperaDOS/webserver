@@ -18,8 +18,9 @@ public class SignUpServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)  {
         UserProfile userProfile = new UserProfile(req.getParameter("login"), req.getParameter("pass"), req.getParameter("email"));
         this.accountService.addNewUser(userProfile);
+
     }
 }

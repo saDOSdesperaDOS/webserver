@@ -13,8 +13,9 @@ import servlets.SignInServlet;
 import servlets.SignUpServlet;
 import servlets.UsersServlet;
 
+import java.util.logging.Logger;
+
 /**
- * @author v.chibrikov
  * Написать сервер с двумя сервлетами:
  * SignUpServlet для обработки запросов на signup и
  * SignInServlet для обработки запросов на signin
@@ -84,6 +85,7 @@ public class Main {
         server.setHandler(handlers);
 
         server.start();
+        Logger.getGlobal().info("Server started");
         server.join();
     }
 }
