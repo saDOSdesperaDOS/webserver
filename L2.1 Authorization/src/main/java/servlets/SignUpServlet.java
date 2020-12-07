@@ -11,16 +11,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SignUpServlet extends HttpServlet {
-   private final AccountService accountService;
-
-    public SignUpServlet(AccountService accountService) {
-        this.accountService = accountService;
-    }
-
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)  {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         UserProfile userProfile = new UserProfile(req.getParameter("login"), req.getParameter("pass"), req.getParameter("email"));
-        this.accountService.addNewUser(userProfile);
-
+        AccountService accountService = new AccountService();
+        accountService.addNewUser(userProfile);
     }
 }

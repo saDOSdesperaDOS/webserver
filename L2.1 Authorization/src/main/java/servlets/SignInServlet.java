@@ -11,12 +11,6 @@ import java.io.PrintWriter;
 
 public class SignInServlet extends HttpServlet {
 
-    private final AccountService accountService;
-
-    public SignInServlet(AccountService accountService) {
-        this.accountService = accountService;
-    }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
