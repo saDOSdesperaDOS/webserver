@@ -11,8 +11,8 @@ import java.util.Map;
  *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
  */
 public class AccountService {
-    private final Map<String, UserProfile> loginToProfile;
-    private final Map<String, UserProfile> sessionIdToProfile;
+    private Map<String, UserProfile> loginToProfile;
+    private Map<String, UserProfile> sessionIdToProfile;
 
     public AccountService() {
         loginToProfile = new HashMap<>();

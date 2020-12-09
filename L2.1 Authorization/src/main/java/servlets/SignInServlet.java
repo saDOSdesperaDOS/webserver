@@ -14,7 +14,7 @@ public class SignInServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        if (re) {
+        /*if (re) {
             resp.setContentType("text/html");
             resp.setStatus(200);
             PrintWriter out = resp.getWriter();
@@ -24,6 +24,7 @@ public class SignInServlet extends HttpServlet {
             resp.setStatus(401);
             PrintWriter out = resp.getWriter();
             out.println("Unauthorized");
-        }
+        }*/
+
     }
 }

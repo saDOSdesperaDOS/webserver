@@ -74,6 +74,7 @@ public class Main {
         context.addServlet(new ServletHolder(new SessionsServlet(accountService)), "/api/v1/sessions");
         context.addServlet(new ServletHolder(new SignUpServlet()), "/signup");
         context.addServlet(new ServletHolder(new SignInServlet()), "/signin");
+        context.addFilter()
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("public_html");
