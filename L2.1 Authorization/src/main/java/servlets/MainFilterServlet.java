@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
-@WebFilter(servletNames = "signupServlet")
+@WebFilter
 public class MainFilterServlet implements Filter {
     private ServletContext context;
 
@@ -21,18 +21,13 @@ public class MainFilterServlet implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        /*HttpServletRequest req = (HttpServletRequest) servletRequest;
-        HttpServletResponse res = (HttpServletResponse) servletResponse;
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
         Enumeration<String> params = req.getParameterNames();
         while (params.hasMoreElements()) {
             String name = params.nextElement();
             String value = req.getParameter(name);
             this.context.log(req.getRemoteAddr() + " ::REQUEST PARAMS:: {" +  name  + "=" +  value +"}"  );
         }
-        res.setContentType("text/html");
-        PrintWriter out = servletResponse.getWriter();
-        out.println("doFilter() mainfilter");*/
-        this.context.log("MainFilterServlet has worked");
     }
 
     @Override
