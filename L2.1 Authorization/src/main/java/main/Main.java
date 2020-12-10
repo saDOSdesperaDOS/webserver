@@ -6,13 +6,13 @@ import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import servlets.SessionsServlet;
-import servlets.SignInServlet;
-import servlets.SignUpServlet;
-import servlets.UsersServlet;
+import servlets.*;
 
+import javax.servlet.DispatcherType;
+import java.util.EnumSet;
 import java.util.logging.Logger;
 
 /**
@@ -64,18 +64,16 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) throws Exception {
         AccountService accountService = new AccountService();
-
+        EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST);
 
         accountService.addNewUser(new UserProfile("admin"));
         accountService.addNewUser(new UserProfile("test"));
-
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");
         context.addServlet(new ServletHolder(new SessionsServlet(accountService)), "/api/v1/sessions");
         context.addServlet(new ServletHolder(new SignUpServlet()), "/signup");
         context.addServlet(new ServletHolder(new SignInServlet()), "/signin");
-        context.addFilter()
-
+        context.addFilter(new FilterHolder(new MainFilterServlet()), "/*", dispatcherTypes );
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("public_html");
 
