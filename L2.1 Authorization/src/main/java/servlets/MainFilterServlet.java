@@ -22,8 +22,24 @@ public class MainFilterServlet implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         Enumeration<String> params = req.getParameterNames();
         AccountService accountService = (AccountService) context.getAttribute("accountService");
-        if (accountService.getUserBySessionId(req.getSession().getId())) {
-
+        if (accountService.getUserBySessionId(req.getSession().getId()) == accountService.getUserByLogin(req.getParameter("login"))) {
+            RequestDispatcher requestDispatcher = this.context.getRequestDispatcher("/signin");
+            try {
+                requestDispatcher.forward(req, servletResponse);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            RequestDispatcher requestDispatcher = this.context.getRequestDispatcher("/signup");
+            try {
+                requestDispatcher.forward(req, servletResponse);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
     @Override
