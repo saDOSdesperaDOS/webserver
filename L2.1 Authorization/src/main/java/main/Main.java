@@ -64,7 +64,6 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) throws Exception {
         AccountService accountService = new AccountService();
-
         accountService.addNewUser(new UserProfile("admin"));
         accountService.addNewUser(new UserProfile("test"));
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -73,17 +72,16 @@ public class Main {
         context.addServlet(new ServletHolder(new SignUpServlet()), "/signup");
         context.addServlet(new ServletHolder(new SignInServlet()), "/signin");
         context.addFilter(new FilterHolder(new MainFilterServlet()), "/*",  EnumSet.of(DispatcherType.REQUEST) );
+        context.setAttribute("accountService", accountService);
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("public_html");
-
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{resource_handler, context});
-
         Server server = new Server(8080);
         server.setHandler(handlers);
-
         server.start();
         Logger.getGlobal().info("Server started");
         server.join();
+
     }
 }

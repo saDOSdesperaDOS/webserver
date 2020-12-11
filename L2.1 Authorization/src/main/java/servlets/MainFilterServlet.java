@@ -1,35 +1,31 @@
 package servlets;
 
+import accounts.AccountService;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.logging.Logger;
 
 @WebFilter
 public class MainFilterServlet implements Filter {
     private ServletContext context;
-
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         this.context = filterConfig.getServletContext();
         this.context.log("MainFilterServlet initialized");
     }
-
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         Enumeration<String> params = req.getParameterNames();
-        while (params.hasMoreElements()) {
-            String name = params.nextElement();
-            String value = req.getParameter(name);
-            this.context.log(req.getRemoteAddr() + " ::REQUEST PARAMS:: {" +  name  + "=" +  value +"}"  );
+        AccountService accountService = (AccountService) context.getAttribute("accountService");
+        if (accountService.getUserBySessionId(req.getSession().getId())) {
+
         }
     }
-
     @Override
     public void destroy() {
 
