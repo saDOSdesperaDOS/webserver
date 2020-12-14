@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class SessionsServlet extends HttpServlet {
     private final AccountService accountService;
@@ -38,18 +39,23 @@ public class SessionsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
+        String pass = request.getParameter("password");
 
         if (login == null || pass == null) {
             response.setContentType("text/html;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            Logger.getGlobal().info("SessionServlet bad request " +
+                    login + " " + response.getStatus());
             return;
         }
 
         UserProfile profile = accountService.getUserByLogin(login);
         if (profile == null || !profile.getPass().equals(pass)) {
             response.setContentType("text/html;charset=utf-8");
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setStatus(400);
+            Logger.getGlobal().info(String.valueOf(response.getStatus()));
+            Logger.getGlobal().info("SessionServlet unauthorized " +
+                    login + " " + response.getStatus());
             return;
         }
 
@@ -59,6 +65,8 @@ public class SessionsServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().println(json);
         response.setStatus(HttpServletResponse.SC_OK);
+        Logger.getGlobal().info("SessionServlet authorized " +
+                login + " " + response.getStatus());
     }
 
     //sign out

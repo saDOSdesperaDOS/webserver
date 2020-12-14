@@ -71,8 +71,8 @@ public class Main {
         context.addServlet(new ServletHolder(new SessionsServlet(accountService)), "/api/v1/sessions");
         context.addServlet(new ServletHolder(new SignUpServlet()), "/signup");
         context.addServlet(new ServletHolder(new SignInServlet()), "/signin");
-        context.addFilter(new FilterHolder(new MainFilterServlet()), "/*",  EnumSet.of(DispatcherType.REQUEST) );
-        context.setAttribute("accountService", accountService);
+        //context.addFilter(new FilterHolder(new MainFilterServlet()), "/*",  EnumSet.of(DispatcherType.REQUEST) );
+        //context.setAttribute("accountService", accountService);
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("public_html");
         HandlerList handlers = new HandlerList();
