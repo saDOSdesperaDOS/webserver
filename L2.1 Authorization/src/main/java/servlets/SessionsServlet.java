@@ -65,8 +65,7 @@ public class SessionsServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().println(json);
         response.setStatus(HttpServletResponse.SC_OK);
-        Logger.getGlobal().info("SessionServlet authorized " +
-                login + " " + response.getStatus());
+        Logger.getGlobal().info("SessionServlet authorized " + login + " " + response.getStatus());
     }
 
     //sign out

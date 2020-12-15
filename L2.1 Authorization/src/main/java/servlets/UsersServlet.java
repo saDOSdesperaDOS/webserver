@@ -33,9 +33,11 @@ public class UsersServlet extends HttpServlet {
         UserProfile userProfile = new UserProfile(request.getParameter("login"), request.getParameter("password"), request.getParameter("email"));
 
         if (accountService.getUserByLogin(userProfile.getLogin()) != null) {
-            response.setContentType("text/html");
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             Logger.getGlobal().warning("A user named " + userProfile.getLogin() + " is already registered. Come up with a different username." + " " + "response status: " + response.getStatus());
+            return;
+        }
+        if (userProfile.getLogin() == null || userProfile.getPass() == null) {
+            Logger.getGlobal().warning("All fields must be filled in");
             return;
         }
             accountService.addNewUser(userProfile);
