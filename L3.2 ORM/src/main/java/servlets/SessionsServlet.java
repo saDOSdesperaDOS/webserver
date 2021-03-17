@@ -3,6 +3,7 @@ package servlets;
 import com.google.gson.Gson;
 import dbService.AccountService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -51,12 +52,17 @@ public class SessionsServlet extends HttpServlet {
         }
 
         entities.UserProfile profile = accountService.getUserByLogin(login);
-        if (profile == null || !profile.getPass().equals(password)) {
+        if (!profile.getPass().equals(password)) {
             response.setContentType("text/html;charset=utf-8");
             response.setStatus(401);
             Logger.getGlobal().info("SessionServlet unauthorized " +
                     login + " " + response.getStatus());
             response.getWriter().println("Unauthorized");
+            return;
+        }
+
+        if (profile == null) {
+                request.getRequestDispatcher("/signup").forward(request, response);
             return;
         }
 
