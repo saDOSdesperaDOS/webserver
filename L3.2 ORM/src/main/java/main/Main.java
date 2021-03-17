@@ -4,14 +4,17 @@ package main;
 import dbService.DBException;
 import dbService.DBService;
 import dbService.dataSets.UsersDataSet;
+import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.handler.HandlerList;
+import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import servlets.SignUpServlet;
+import org.eclipse.jetty.server.Server;
 
-/**
- * @author v.chibrikov
- *         <p>
- *         Пример кода для курса на https://stepic.org/
- *         <p>
- *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
- */
+import java.util.logging.Logger;
+
+
 public class Main {
     public static void main(String[] args) {
         DBService dbService = new DBService();
@@ -27,5 +30,23 @@ public class Main {
         } catch (DBException e) {
             e.printStackTrace();
         }
+
+        ServletContextHandler contextHandler = new ServletContextHandler();
+        contextHandler.addServlet(new ServletHolder(new SignUpServlet()), "/signup");
+        ResourceHandler resourceHandler = new ResourceHandler();
+        resourceHandler.setResourceBase("public_html");
+        HandlerList handlers = new HandlerList();
+        handlers.setHandlers(new Handler[]{resourceHandler, contextHandler});
+        Server server = new Server(8080);
+        server.setHandler(handlers);
+        try {
+            server.start();
+            server.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Logger.getGlobal().info("Server started");
+
+
     }
 }
