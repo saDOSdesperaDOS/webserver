@@ -2,9 +2,6 @@ package main;
 
 
 import dbService.AccountService;
-import dbService.DBException;
-import dbService.DBService;
-import dbService.dataSets.UsersDataSet;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
@@ -34,7 +31,7 @@ public class Main {
         }*/
 
         ServletContextHandler contextHandler = new ServletContextHandler();
-        contextHandler.addServlet(new ServletHolder(new SignUpServlet()), "/signup");
+        contextHandler.addServlet(new ServletHolder(new SignUpServlet(new AccountService())), "/signup");
         contextHandler.addServlet(new ServletHolder(new SessionsServlet(new AccountService())), "/api/v1/sessions");
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("public_html");
