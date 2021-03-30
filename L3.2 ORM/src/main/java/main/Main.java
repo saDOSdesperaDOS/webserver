@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
-        DBService dbService = new DBService();
+       /*DBService dbService = new DBService();
         dbService.printConnectInfo();
 
         try {
@@ -31,9 +31,9 @@ public class Main {
 
         } catch (DBException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        /*ServletContextHandler contextHandler = new ServletContextHandler();
+        ServletContextHandler contextHandler = new ServletContextHandler();
         contextHandler.addServlet(new ServletHolder(new SignUpServlet(new AccountService())), "/signup");
         contextHandler.addServlet(new ServletHolder(new SessionsServlet(new AccountService())), "/api/v1/sessions");
         ResourceHandler resourceHandler = new ResourceHandler();
@@ -47,9 +47,7 @@ public class Main {
             server.join();
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
         Logger.getGlobal().info("Server started");
-
-
     }
 }
