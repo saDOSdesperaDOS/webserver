@@ -37,7 +37,7 @@ public class SessionsServlet extends HttpServlet {
     }
 
     //sign in
-    public void doPost(HttpServletRequest request,
+    /*public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
@@ -66,14 +66,14 @@ public class SessionsServlet extends HttpServlet {
             return;
         }
 
-        accountService.addSession(request.getSession().getId(), profile);
+        accountService.addSession(request.getSession().getId(), profile);*/
         /*Gson gson = new Gson();
         String json = gson.toJson(profile);*/
-        response.setContentType("text/html;charset=utf-8");
+       /* response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         Logger.getGlobal().info("SessionServlet authorized " + login + " " + response.getStatus());
         response.getWriter().println("Authorized: " + login);
-    }
+    }*/
 
     //sign out
     public void doDelete(HttpServletRequest request,

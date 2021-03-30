@@ -7,21 +7,25 @@ import java.util.Map;
 
 public class AccountService {
 
-    private Map<String, UserProfile> loginToProfile;
+    private DBService loginToProfile;
     private Map<String, UserProfile> sessionIdToProfile;
 
     public AccountService() {
-        loginToProfile = new HashMap<>();
-        sessionIdToProfile = new HashMap<>();
+        loginToProfile = new DBService();
     }
 
     public void addNewUser(UserProfile userProfile) {
-        loginToProfile.put(userProfile.getLogin(), userProfile);
+        try {
+            loginToProfile.addUser(userProfile.getLogin());
+        } catch (DBException e) {
+            System.out.println("Exception DBService#addNewUser");
+            e.printStackTrace();
+        }
     }
     //метод который делает запрос в б.д
-    public UserProfile getUserByLogin(String login) {
+    /*public UserProfile getUserByLogin(String login) {
         return loginToProfile.get(login);
-    }
+    }*/
 
     public UserProfile getUserBySessionId(String sessionId) {
         return sessionIdToProfile.get(sessionId);

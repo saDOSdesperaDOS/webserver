@@ -3,6 +3,7 @@ package servlets;
 import dbService.AccountService;
 import dbService.DBException;
 import dbService.DBService;
+import entities.UserProfile;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,13 +38,7 @@ public class SignUpServlet extends HttpServlet {
             response.getWriter().println("SignUpServlet bad request. login or password");
             return;
         }
-        DBService dbService = new DBService();
-        try {
-            dbService.addUser(login);
-        } catch (DBException e) {
-            System.out.println("Exception DBService#addUser("+login+")");
-            e.printStackTrace();
-        }
+        accountService.addNewUser(new UserProfile(login));
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         Logger.getGlobal().info("SignUpServlet registered " + login + " " + response.getStatus());
