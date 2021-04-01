@@ -1,40 +1,30 @@
 package main;
 
 
-import dbService.AccountService;
 import dbService.DBException;
 import dbService.DBService;
 import dbService.dataSets.UsersDataSet;
-import org.eclipse.jetty.server.Handler;
-import org.eclipse.jetty.server.handler.HandlerList;
-import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
-import servlets.SessionsServlet;
-import servlets.SignInServlet;
-import servlets.SignUpServlet;
-import org.eclipse.jetty.server.Server;
 
 import java.util.logging.Logger;
 
 
 public class Main {
     public static void main(String[] args) {
-       /*DBService dbService = new DBService();
+        DBService dbService = new DBService();
         dbService.printConnectInfo();
 
         try {
             long userId = dbService.addUser("tully");
             System.out.println("Added user id: " + userId);
 
-            UsersDataSet dataSet = dbService.getUser(userId);
+            UsersDataSet dataSet = dbService.getUserById(userId);
             System.out.println("User data set: " + dataSet);
 
         } catch (DBException e) {
             e.printStackTrace();
-        }*/
+        }
 
-        ServletContextHandler contextHandler = new ServletContextHandler();
+        /*ServletContextHandler contextHandler = new ServletContextHandler();
         contextHandler.addServlet(new ServletHolder(new SignUpServlet(new AccountService())), "/signup");
         contextHandler.addServlet(new ServletHolder(new SignInServlet(new AccountService())), "/signin");
         contextHandler.addServlet(new ServletHolder(new SessionsServlet(new AccountService())), "/api/v1/sessions");
@@ -49,7 +39,7 @@ public class Main {
             server.join();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         Logger.getGlobal().info("Server started");
     }
 }

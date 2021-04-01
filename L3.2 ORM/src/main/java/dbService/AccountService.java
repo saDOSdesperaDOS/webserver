@@ -1,41 +1,25 @@
 package dbService;
 
-import entities.UserProfile;
-
-import java.util.HashMap;
-import java.util.Map;
+import dbService.dataSets.UsersDataSet;
 
 public class AccountService {
-
-    private DBService loginToProfile;
-    private Map<String, UserProfile> sessionIdToProfile;
+    DBService dbService;
 
     public AccountService() {
-        loginToProfile = new DBService();
+        dbService = new DBService();
     }
 
-    public void addNewUser(UserProfile userProfile) {
+    public void addNewUser(UsersDataSet usersDataSet) {
         try {
-            loginToProfile.addUser(userProfile.getLogin());
+            dbService.addUser(usersDataSet.getLogin());
         } catch (DBException e) {
             System.out.println("Exception DBService#addNewUser");
             e.printStackTrace();
         }
     }
     //метод который делает запрос в б.д
-    /*public UserProfile getUserByLogin(String login) {
-        return loginToProfile.get(login);
-    }*/
-
-    public UserProfile getUserBySessionId(String sessionId) {
-        return sessionIdToProfile.get(sessionId);
+    public UsersDataSet getUserByLogin(String login) throws DBException {
+           return dbService.getUserByLogin(login);
     }
 
-    public void addSession(String sessionId, UserProfile userProfile) {
-        sessionIdToProfile.put(sessionId, userProfile);
-    }
-
-    public void deleteSession(String sessionId) {
-        sessionIdToProfile.remove(sessionId);
-    }
 }
