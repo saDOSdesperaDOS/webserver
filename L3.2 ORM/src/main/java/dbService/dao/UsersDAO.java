@@ -30,7 +30,7 @@ public class UsersDAO {
         return ((UsersDataSet) criteria.add(Restrictions.eq("login", login)).uniqueResult()).getId();
     }
 
-    public long insertUser(String login) throws HibernateException {
-        return (Long) session.save(new UsersDataSet(login));
+    public long insertUser(String login, String password) throws HibernateException {
+        return (Long) session.save(new UsersDataSet(login, password));
     }
 }

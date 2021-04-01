@@ -86,12 +86,12 @@ public class DBService {
             throw new DBException(e);
         }
     }
-    public long addUser(String login) throws DBException {
+    public long addUser(String login, String password) throws DBException {
         try {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
             UsersDAO dao = new UsersDAO(session);
-            long id = dao.insertUser(login);
+            long id = dao.insertUser(login, password);
             transaction.commit();
             session.close();
             return id;

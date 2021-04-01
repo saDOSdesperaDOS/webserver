@@ -1,16 +1,25 @@
 package main;
 
 
+import dbService.AccountService;
 import dbService.DBException;
 import dbService.DBService;
 import dbService.dataSets.UsersDataSet;
+import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.HandlerList;
+import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import servlets.SignInServlet;
+import servlets.SignUpServlet;
 
 import java.util.logging.Logger;
 
 
 public class Main {
     public static void main(String[] args) {
-        DBService dbService = new DBService();
+        /*DBService dbService = new DBService();
         dbService.printConnectInfo();
 
         try {
@@ -22,12 +31,11 @@ public class Main {
 
         } catch (DBException e) {
             e.printStackTrace();
-        }
-
-        /*ServletContextHandler contextHandler = new ServletContextHandler();
-        contextHandler.addServlet(new ServletHolder(new SignUpServlet(new AccountService())), "/signup");
-        contextHandler.addServlet(new ServletHolder(new SignInServlet(new AccountService())), "/signin");
-        contextHandler.addServlet(new ServletHolder(new SessionsServlet(new AccountService())), "/api/v1/sessions");
+        }*/
+        AccountService accountService = new AccountService();
+        ServletContextHandler contextHandler = new ServletContextHandler();
+        contextHandler.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/signup");
+        contextHandler.addServlet(new ServletHolder(new SignInServlet(accountService)), "/signin");
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("public_html");
         HandlerList handlers = new HandlerList();
@@ -39,7 +47,7 @@ public class Main {
             server.join();
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
         Logger.getGlobal().info("Server started");
     }
 }

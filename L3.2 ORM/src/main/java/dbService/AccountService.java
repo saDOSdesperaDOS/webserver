@@ -11,13 +11,12 @@ public class AccountService {
 
     public void addNewUser(UsersDataSet usersDataSet) {
         try {
-            dbService.addUser(usersDataSet.getLogin());
+            dbService.addUser(usersDataSet.getLogin(), usersDataSet.getPassword());
         } catch (DBException e) {
             System.out.println("Exception DBService#addNewUser");
             e.printStackTrace();
         }
     }
-    //метод который делает запрос в б.д
     public UsersDataSet getUserByLogin(String login) throws DBException {
            return dbService.getUserByLogin(login);
     }
