@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d0926-db84-4cea-923b-a9008ef8be1a" name="Default Changelist" comment="">
+    <list default="true" id="fc5ff2cb-cc92-4c46-a578-29dbcce1e1e3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/h2db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/h2db.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dbService/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbService/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbService/DBException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbService/DBException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dbService/DBService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbService/DBService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dbService/dao/UsersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbService/dao/UsersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlets/SignInServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlets/SignInServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlets/SignUpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlets/SignUpServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,7 @@
   <component name="MavenRunner">
     <option name="jreName" value="1.8" />
   </component>
-  <component name="ProjectId" id="1qYjXjbjwYm0btjHFHyQfkty8ml" />
+  <component name="ProjectId" id="1qc03LjxnGx6qDW39RLCUPzIulP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -52,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Test" />
     <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
   </component>
   <component name="RunManager">
@@ -89,12 +90,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="631d0926-db84-4cea-923b-a9008ef8be1a" name="Default Changelist" comment="" />
-      <created>1617263460001</created>
+      <changelist id="fc5ff2cb-cc92-4c46-a578-29dbcce1e1e3" name="Default Changelist" comment="" />
+      <created>1617363371759</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1617263460001</updated>
-      <workItem from="1617263461053" duration="6585000" />
+      <updated>1617363371759</updated>
+      <workItem from="1617363372820" duration="12715000" />
     </task>
     <servers />
   </component>

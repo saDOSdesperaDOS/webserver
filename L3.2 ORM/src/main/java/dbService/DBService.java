@@ -14,13 +14,6 @@ import org.hibernate.service.ServiceRegistry;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**
- * @author v.chibrikov
- *         <p>
- *         Пример кода для курса на https://stepic.org/
- *         <p>
- *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
- */
 public class DBService {
     private static final String hibernate_show_sql = "true";
     private static final String hibernate_hbm2ddl_auto = "create";
@@ -62,7 +55,7 @@ public class DBService {
     }
 
 
-    public UsersDataSet getUserById(long id) throws DBException {
+    public UsersDataSet getUser(long id) throws DBException {
         try {
             Session session = sessionFactory.openSession();
             UsersDAO dao = new UsersDAO(session);
@@ -74,20 +67,12 @@ public class DBService {
         }
     }
 
-    public UsersDataSet getUserByLogin(String login) throws DBException {
-        try {
-            Session session = sessionFactory.openSession();
-            UsersDAO dao = new UsersDAO(session);
-            long idUserDataSet = dao.getUserId(login);
-            UsersDataSet usersDataSet = dao.get(idUserDataSet);
-            session.close();
-            return usersDataSet;
-        } catch (HibernateException e) {
-            throw new DBException(e);
-        }
+    public long getUserId(String login) {
+        Session session = sessionFactory.openSession();
+        return new UsersDAO(session).getUserId(login);
     }
-    public long addUser(String login, String password) throws DBException {
-        try {
+
+    public long addUser(String login, String password) {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
             UsersDAO dao = new UsersDAO(session);
@@ -95,9 +80,6 @@ public class DBService {
             transaction.commit();
             session.close();
             return id;
-        } catch (HibernateException e) {
-            throw new DBException(e);
-        }
     }
 
     public void printConnectInfo() {

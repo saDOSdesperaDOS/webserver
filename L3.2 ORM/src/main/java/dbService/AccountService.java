@@ -9,16 +9,11 @@ public class AccountService {
         dbService = new DBService();
     }
 
-    public void addNewUser(UsersDataSet usersDataSet) {
-        try {
-            dbService.addUser(usersDataSet.getLogin(), usersDataSet.getPassword());
-        } catch (DBException e) {
-            System.out.println("Exception DBService#addNewUser");
-            e.printStackTrace();
-        }
+    public long saveUser(UsersDataSet usersDataSet) {
+            return dbService.addUser(usersDataSet.getLogin(), usersDataSet.getPassword());
     }
-    public UsersDataSet getUserByLogin(String login) throws DBException {
-           return dbService.getUserByLogin(login);
+    public long getId(String login) {
+         return  dbService.getUserId(login);
     }
 
 }
