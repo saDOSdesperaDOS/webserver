@@ -16,4 +16,14 @@ public class AccountService {
          return  dbService.getUserId(login);
     }
 
+    public UsersDataSet getUser(long id) {
+       UsersDataSet usersDataSet = null;
+        try {
+            usersDataSet = dbService.getUser(id);
+        } catch (NullPointerException | DBException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return usersDataSet;
+    }
 }

@@ -19,19 +19,28 @@ public class SignInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        long id = accountService.getId(login);
-
-        if ( !password.equals(usersDataSet.getPassword()) || usersDataSet == null ) {
+        long id = 0;
+        try {
+            id = accountService.getId(login);
+            UsersDataSet usersDataSet = accountService.getUser(id);
+            if (!usersDataSet.getPassword().equals(password)) {
+                resp.setContentType("text/html;charset=utf-8");
+                resp.setStatus(401);
+                Logger.getGlobal().info("SignInServlet unauthorized " +
+                        login + " " + resp.getStatus());
+                resp.getWriter().println("Unauthorized");
+                return;
+            }
+            resp.setContentType("text/html;charset=utf-8");
+            resp.setStatus(HttpServletResponse.SC_OK);
+            Logger.getGlobal().info("SignInServlet authorized " + login + " " + resp.getStatus());
+            resp.getWriter().println("Authorized: " + login);
+        } catch (NullPointerException e) {
             resp.setContentType("text/html;charset=utf-8");
             resp.setStatus(401);
             Logger.getGlobal().info("SignInServlet unauthorized " +
                     login + " " + resp.getStatus());
             resp.getWriter().println("Unauthorized");
-            return;
         }
-        resp.setContentType("text/html;charset=utf-8");
-        resp.setStatus(HttpServletResponse.SC_OK);
-        Logger.getGlobal().info("SignInServlet authorized " + login + " " + resp.getStatus());
-        resp.getWriter().println("Authorized: " + login);
     }
 }

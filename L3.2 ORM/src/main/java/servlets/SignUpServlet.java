@@ -36,7 +36,7 @@ public class SignUpServlet extends HttpServlet {
             response.getWriter().println("Bad request. login or password");
             return;
         }
-        accountService.addNewUser(new UsersDataSet(login, password));
+        accountService.saveUser(new UsersDataSet(login, password));
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         Logger.getGlobal().info("SignUpServlet registered " + login + " " + response.getStatus());

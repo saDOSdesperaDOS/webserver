@@ -67,7 +67,7 @@ public class DBService {
         }
     }
 
-    public long getUserId(String login) {
+    public long getUserId(String login) throws NullPointerException {
         Session session = sessionFactory.openSession();
         return new UsersDAO(session).getUserId(login);
     }

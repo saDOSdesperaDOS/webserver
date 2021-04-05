@@ -19,7 +19,7 @@ public class UsersDAO {
         return (UsersDataSet) session.get(UsersDataSet.class, id);
     }
 
-    public long getUserId(String login) throws HibernateException {
+    public long getUserId(String login) throws HibernateException, NullPointerException {
         Criteria criteria = session.createCriteria(UsersDataSet.class);
         return ((UsersDataSet) criteria.add(Restrictions.eq("login", login)).uniqueResult()).getId();
     }
