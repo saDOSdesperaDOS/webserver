@@ -42,10 +42,11 @@ public class Main {
         server.setHandler(handlers);
         try {
             server.start();
+            Logger.getGlobal().info("Server started");
             server.join();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Logger.getGlobal().info("Server started");
+
     }
 }

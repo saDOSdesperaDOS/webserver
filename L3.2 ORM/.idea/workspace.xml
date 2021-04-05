@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc5ff2cb-cc92-4c46-a578-29dbcce1e1e3" name="Default Changelist" comment="">
+    <list default="true" id="28bfa326-44b6-4b1b-988e-812428ed7f96" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/h2db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/h2db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbService/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbService/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbService/DBException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbService/DBException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dbService/DBService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbService/DBService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbService/dao/UsersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbService/dao/UsersDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlets/SignInServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlets/SignInServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlets/SignUpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlets/SignUpServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +27,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:\opt\maven" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../opt/maven" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -41,7 +39,7 @@
   <component name="MavenRunner">
     <option name="jreName" value="1.8" />
   </component>
-  <component name="ProjectId" id="1qc03LjxnGx6qDW39RLCUPzIulP" />
+  <component name="ProjectId" id="1qkeBexOZTxu1qnYd0rtU9f4url" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -69,6 +67,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -78,13 +87,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fc5ff2cb-cc92-4c46-a578-29dbcce1e1e3" name="Default Changelist" comment="" />
-      <created>1617363371759</created>
+      <changelist id="28bfa326-44b6-4b1b-988e-812428ed7f96" name="Default Changelist" comment="" />
+      <created>1617627881429</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1617363371759</updated>
-      <workItem from="1617363372820" duration="12715000" />
-      <workItem from="1617609569934" duration="2747000" />
+      <updated>1617627881429</updated>
+      <workItem from="1617627882559" duration="499000" />
     </task>
     <servers />
   </component>
@@ -101,6 +109,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

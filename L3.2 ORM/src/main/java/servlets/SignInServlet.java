@@ -26,20 +26,18 @@ public class SignInServlet extends HttpServlet {
             if (!usersDataSet.getPassword().equals(password)) {
                 resp.setContentType("text/html;charset=utf-8");
                 resp.setStatus(401);
-                Logger.getGlobal().info("SignInServlet unauthorized " +
-                        login + " " + resp.getStatus());
+                Logger.getGlobal().info("Status code " + " " + "(" + resp.getStatus() + ")");
                 resp.getWriter().println("Unauthorized");
                 return;
             }
             resp.setContentType("text/html;charset=utf-8");
             resp.setStatus(HttpServletResponse.SC_OK);
-            Logger.getGlobal().info("SignInServlet authorized " + login + " " + resp.getStatus());
+            Logger.getGlobal().info("Status code " + " " + "(" + resp.getStatus() + ")");
             resp.getWriter().println("Authorized: " + login);
         } catch (NullPointerException e) {
             resp.setContentType("text/html;charset=utf-8");
             resp.setStatus(401);
-            Logger.getGlobal().info("SignInServlet unauthorized " +
-                    login + " " + resp.getStatus());
+            Logger.getGlobal().info("Status code " + " " + "(" + resp.getStatus() + ")");
             resp.getWriter().println("Unauthorized");
         }
     }
