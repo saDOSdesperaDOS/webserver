@@ -1,6 +1,7 @@
 package dbService;
 
 import dbService.dataSets.UsersDataSet;
+import org.h2.jdbc.JdbcSQLException;
 
 public class AccountService {
     DBService dbService;
@@ -22,8 +23,11 @@ public class AccountService {
             usersDataSet = dbService.getUser(id);
         } catch (NullPointerException | DBException e) {
             e.printStackTrace();
-            return null;
         }
         return usersDataSet;
+    }
+
+    public boolean isRegistered(UsersDataSet usersDataSet) throws JdbcSQLException {
+        return  dbService.isRegistered(usersDataSet.getLogin());
     }
 }

@@ -2,12 +2,14 @@ package dbService;
 
 import dbService.dao.UsersDAO;
 import dbService.dataSets.UsersDataSet;
+import org.h2.jdbc.JdbcSQLException;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.service.ServiceRegistry;
 
@@ -67,7 +69,7 @@ public class DBService {
         }
     }
 
-    public long getUserId(String login) throws NullPointerException {
+    public long getUserId(String login) {
         Session session = sessionFactory.openSession();
         return new UsersDAO(session).getUserId(login);
     }
@@ -80,6 +82,22 @@ public class DBService {
             transaction.commit();
             session.close();
             return id;
+    }
+
+    public boolean isRegistered(String login) throws HibernateException, ConstraintViolationException{
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            UsersDAO dao = new UsersDAO(session);
+            dao.getUserId(login);
+
+        } catch (ConstraintViolationException e) {
+            return false;
+        } finally {
+            transaction.commit();
+            session.close();
+        }
+            return true;
     }
 
     public void printConnectInfo() {

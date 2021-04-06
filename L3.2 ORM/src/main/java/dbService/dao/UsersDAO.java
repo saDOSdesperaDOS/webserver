@@ -19,12 +19,17 @@ public class UsersDAO {
         return (UsersDataSet) session.get(UsersDataSet.class, id);
     }
 
-    public long getUserId(String login) throws HibernateException, NullPointerException {
-        Criteria criteria = session.createCriteria(UsersDataSet.class);
-        return ((UsersDataSet) criteria.add(Restrictions.eq("login", login)).uniqueResult()).getId();
-    }
+    //вернет -1 если такого пользователя нет в базе
+    public long getUserId(String login) {
+        try {
+            Criteria criteria = session.createCriteria(UsersDataSet.class);
+            return ((UsersDataSet) criteria.add(Restrictions.eq("login", login)).uniqueResult()).getId();
+        } catch (NullPointerException e) {
+            return new UsersDataSet(login).getId();
+        }
+        }
 
     public long insertUser(String login, String password) throws HibernateException {
-        return (Long) session.save(new UsersDataSet(login, password));
+        return (long) session.save(new UsersDataSet(login, password));
     }
 }
